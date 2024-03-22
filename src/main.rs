@@ -23,4 +23,5 @@ fn main() {
             special,
         } => info::what_is(character, base, special),
     }
+    println!("");
 }
