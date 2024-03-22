@@ -8,6 +8,8 @@ Simple call the CLI with the `table` subcommand, to view the table
 ascii table
 ```
 
+![Ascii Table Example](img/asciitable)
+
 to get the table in base 16, or change the base by adding the argument:
 
 ```bash
