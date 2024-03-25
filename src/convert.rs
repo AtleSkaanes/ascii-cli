@@ -44,7 +44,7 @@ pub fn to_num(chars: Option<Vec<String>>, base: u8) {
         verification::under_128(char_num);
         let c = table::get_char(char_num, true);
         if c.1 || c.0 == " " {
-            string = format!(" {} ", string.blue().italic());
+            string = format!("{}", string.blue().italic());
         }
         print!("{} ", string);
     }
