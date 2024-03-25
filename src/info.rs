@@ -5,8 +5,13 @@ use radix_fmt::radix;
 
 use crate::{table, verification};
 
-pub fn what_is(string: String, base: u8, is_special: bool) {
+pub fn what_is(string: Option<String>, base: u8, is_special: bool) {
     verification::check_base(base);
+
+    let string = match string {
+        Some(n) => n,
+        None => verification::get_input("Char to inspect"),
+    };
 
     let mut special = is_special;
 

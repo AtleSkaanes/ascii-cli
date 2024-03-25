@@ -1,5 +1,7 @@
 use colored::Colorize;
 
+use crate::cli;
+
 pub fn check_base(base: u8) {
     if !(2..=36).contains(&base) {
         println!(
@@ -35,5 +37,20 @@ pub fn get_number(string: String, base: u8) -> u32 {
                 .bold()
         );
         std::process::exit(1);
+    }
+}
+
+pub fn get_input(input_name: &str) -> String {
+    match cli::get_std_in() {
+        Ok(input) => input.trim().to_string(),
+        Err(_) => {
+            println!(
+                "{}",
+                format!("Please provide a value for \"{}\"", input_name)
+                    .red()
+                    .bold()
+            );
+            std::process::exit(1);
+        }
     }
 }

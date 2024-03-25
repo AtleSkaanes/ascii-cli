@@ -18,7 +18,7 @@ pub enum SubCommands {
     ToChar {
         /// The number(s) to be converted to a character
         #[clap(num_args = 1.., value_delimiter = ' ')]
-        number: Vec<String>,
+        number: Option<Vec<String>>,
         /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
         #[arg(short, long, default_value_t = 16)]
         base: u8,
@@ -30,7 +30,7 @@ pub enum SubCommands {
     ToNum {
         /// The char(s) to be converted to a character
         #[clap(num_args = 1.., value_delimiter = ' ')]
-        char: Vec<String>,
+        char: Option<Vec<String>>,
         /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
         #[arg(short, long, default_value_t = 16)]
         base: u8,
@@ -38,7 +38,7 @@ pub enum SubCommands {
     WhatIs {
         /// The number of the char you want to know more about, or the special characters name if
         /// its a special character you want to know about (If so, use the -s flag)
-        character: String,
+        character: Option<String>,
         /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
         #[arg(short, long, default_value_t = 16)]
         base: u8,
@@ -46,4 +46,11 @@ pub enum SubCommands {
         #[arg(short, long)]
         special: bool,
     },
+}
+
+pub fn get_std_in() -> std::io::Result<String> {
+    let mut buffer = String::new();
+    let stdin = std::io::stdin(); // We get `Stdin` here.
+    stdin.read_line(&mut buffer)?;
+    Ok(buffer)
 }
