@@ -1,7 +1,5 @@
-use std::io::IsTerminal;
-
 use clap::{Parser, Subcommand};
-use std::io::{self, BufRead};
+use std::io::BufRead;
 
 #[derive(Debug, Parser)]
 #[command(version, about)]

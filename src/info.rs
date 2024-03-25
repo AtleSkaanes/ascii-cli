@@ -15,8 +15,8 @@ pub fn what_is(string: Option<String>, base: u8, is_special: bool) {
 
     let mut special = is_special;
 
-    let mut character = String::new();
-    let mut name = String::new();
+    let character;
+    let name;
     let mut description = String::new();
     let mut category = String::new();
 
