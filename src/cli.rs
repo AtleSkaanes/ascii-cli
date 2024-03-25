@@ -1,4 +1,7 @@
+use std::io::IsTerminal;
+
 use clap::{Parser, Subcommand};
+use std::io::{self, BufRead};
 
 #[derive(Debug, Parser)]
 #[command(version, about)]
@@ -48,9 +51,16 @@ pub enum SubCommands {
     },
 }
 
-pub fn get_std_in() -> std::io::Result<String> {
-    let mut buffer = String::new();
-    let stdin = std::io::stdin(); // We get `Stdin` here.
-    stdin.read_line(&mut buffer)?;
-    Ok(buffer)
+pub fn get_std_in() -> Result<String, ()> {
+    let input = std::io::stdin()
+        .lock()
+        .lines()
+        .fold("".to_string(), |acc, line| acc + &line.unwrap() + "\n");
+
+    Ok(input)
+
+    // let mut buffer = String::new();
+    // let stdin = std::io::stdin();
+    // stdin.read_line(&mut buffer)?;
+    // Ok(buffer)
 }

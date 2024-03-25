@@ -39,7 +39,11 @@ pub fn to_num(chars: Option<Vec<String>>, base: u8) {
 
     for c in chars.join(" ").chars() {
         let mut string = format!("{:#}", radix(c as u32, base));
-        if c == ' ' {
+
+        let char_num = verification::get_number(string.clone(), base);
+        verification::under_128(char_num);
+        let c = table::get_char(char_num, true);
+        if c.1 || c.0 == " " {
             string = format!(" {} ", string.blue().italic());
         }
         print!("{} ", string);

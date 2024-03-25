@@ -1,3 +1,5 @@
+use std::io::IsTerminal;
+
 use colored::Colorize;
 
 use crate::cli;
@@ -41,16 +43,22 @@ pub fn get_number(string: String, base: u8) -> u32 {
 }
 
 pub fn get_input(input_name: &str) -> String {
+    let throw_err = || {
+        println!(
+            "{}",
+            format!("Please provide a value for \"{}\"", input_name)
+                .red()
+                .bold()
+        );
+        std::process::exit(1);
+    };
+
+    if std::io::stdin().is_terminal() {
+        throw_err();
+    }
+
     match cli::get_std_in() {
         Ok(input) => input.trim().to_string(),
-        Err(_) => {
-            println!(
-                "{}",
-                format!("Please provide a value for \"{}\"", input_name)
-                    .red()
-                    .bold()
-            );
-            std::process::exit(1);
-        }
+        Err(_) => throw_err(),
     }
 }
