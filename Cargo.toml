@@ -2,6 +2,11 @@
 name = "ascii"
 version = "1.1.0"
 edition = "2021"
+authors = ["Atle Skaanes Ahrenfeldt <atle.skaanes@gmail.com>"]
+description = "A small CLI for quickly viewing the ASCII table in your terminal"
+repository = "https://github.com/AtleSkaanes/ascii-cli"
+keywords = ["utility", "ascii", "table"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
