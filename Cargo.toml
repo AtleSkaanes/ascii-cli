@@ -7,6 +7,7 @@ description = "A small CLI for quickly viewing the ASCII table in your terminal"
 repository = "https://github.com/AtleSkaanes/ascii-cli"
 keywords = ["utility", "ascii", "table"]
 categories = ["command-line-utilities"]
+license = "MIT OR Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
