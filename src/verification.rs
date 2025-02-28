@@ -21,7 +21,7 @@ pub fn check_base(base: u8) {
 
 pub fn under_128(number: u32) {
     if number > 127 {
-        println!("{}", format!("{number} is over the ASCII limit of 127!"));
+        println!("{} is over the ASCII limit of 127!", number);
         std::process::exit(1);
     }
 }
@@ -57,8 +57,6 @@ pub fn get_input(input_name: &str) -> String {
         throw_err();
     }
 
-    match cli::get_std_in() {
-        Ok(input) => input.trim().to_string(),
-        Err(_) => throw_err(),
-    }
+    let input = cli::get_std_in();
+    input.trim().to_string()
 }

@@ -1,15 +1,10 @@
+use ascii_cli::*;
 use clap::Parser;
-
-mod cli;
-mod convert;
-mod info;
-mod table;
-mod verification;
 
 fn main() {
     let args = cli::Args::parse();
 
-    match args.command {
+    match args.command.unwrap_or_default() {
         cli::SubCommands::Table { base } => table::show_table(base),
         cli::SubCommands::ToChar {
             number,
@@ -23,5 +18,5 @@ fn main() {
             special,
         } => info::what_is(character, base, special),
     }
-    println!("");
+    println!();
 }

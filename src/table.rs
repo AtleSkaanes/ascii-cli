@@ -19,7 +19,7 @@ pub fn show_table(base: u8) {
             print!("{:>8}", format!("{:#}", radix(char_num, base)).blue());
             print!(" {:<5}", char_string);
         }
-        print!("\n");
+        println!();
     }
 }
 

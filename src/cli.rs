@@ -5,7 +5,7 @@ use std::io::BufRead;
 #[command(version, about)]
 pub struct Args {
     #[command(subcommand)]
-    pub command: SubCommands,
+    pub command: Option<SubCommands>,
 }
 
 #[derive(Subcommand, Debug)]
@@ -49,16 +49,17 @@ pub enum SubCommands {
     },
 }
 
-pub fn get_std_in() -> Result<String, ()> {
-    let input = std::io::stdin()
+impl Default for SubCommands {
+    fn default() -> Self {
+        Self::Table { base: 16 }
+    }
+}
+
+pub fn get_std_in() -> String {
+    std::io::stdin()
         .lock()
         .lines()
-        .fold("".to_string(), |acc, line| acc + &line.unwrap() + "\n");
-
-    Ok(input)
-
-    // let mut buffer = String::new();
-    // let stdin = std::io::stdin();
-    // stdin.read_line(&mut buffer)?;
-    // Ok(buffer)
+        .fold("".to_string(), |acc, line| {
+            acc + &line.unwrap_or_default() + "\n"
+        })
 }
