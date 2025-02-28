@@ -1,6 +1,6 @@
 [package]
 name = "ascii-cli"
-version = "1.1.0"
+version = "1.2.0"
 edition = "2021"
 authors = ["Atle Skaanes Ahrenfeldt <atle.skaanes@gmail.com>"]
 description = "A small CLI for quickly viewing the ASCII table in your terminal"
