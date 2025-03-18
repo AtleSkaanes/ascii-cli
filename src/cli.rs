@@ -6,7 +6,7 @@ use std::io::BufRead;
 pub struct Args {
     #[command(subcommand)]
     pub command: Option<SubCommands>,
-    /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
+    /// The numbers base [max: 36] [default: 16]
     #[arg(short, long)]
     pub base: Option<u8>,
 }
@@ -15,7 +15,7 @@ pub struct Args {
 pub enum SubCommands {
     /// Shows the Ascii table
     Table {
-        /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
+        /// The numbers base [max: 36]
         #[arg(short, long, default_value_t = 16)]
         base: u8,
     },
@@ -23,7 +23,7 @@ pub enum SubCommands {
         /// The number(s) to be converted to a character
         #[clap(num_args = 1.., value_delimiter = ' ')]
         number: Option<Vec<String>>,
-        /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
+        /// The numbers base [max: 36]
         #[arg(short, long, default_value_t = 16)]
         base: u8,
         /// If it should print special characters as their name, or make them act as usual
@@ -35,7 +35,7 @@ pub enum SubCommands {
         /// The char(s) to be converted to a character
         #[clap(num_args = 1.., value_delimiter = ' ')]
         char: Option<Vec<String>>,
-        /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
+        /// The numbers base [max: 36]
         #[arg(short, long, default_value_t = 16)]
         base: u8,
     },
@@ -43,7 +43,7 @@ pub enum SubCommands {
         /// The number of the char you want to know more about, or the special characters name if
         /// its a special character you want to know about (If so, use the -s flag)
         character: Option<String>,
-        /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
+        /// The numbers base [max is 36]
         #[arg(short, long, default_value_t = 16)]
         base: u8,
         /// Set this flag if the string is the name of a special character, like CR
