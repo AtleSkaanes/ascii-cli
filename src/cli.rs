@@ -13,7 +13,6 @@ pub struct Args {
 
 #[derive(Subcommand, Debug)]
 pub enum SubCommands {
-    Foo,
     /// Shows the Ascii table
     Table {
         /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]

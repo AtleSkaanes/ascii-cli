@@ -17,9 +17,6 @@ fn main() {
             base,
             special,
         } => info::what_is(character, args.base.unwrap_or(base), special),
-        cli::SubCommands::Foo => {
-            println!("GOT BASE: {:?}", args.base);
-        }
     }
     println!();
 }
