@@ -1,6 +1,6 @@
 [package]
 name = "ascii-cli"
-version = "1.2.0"
+version = "1.2.1"
 edition = "2021"
 authors = ["Atle Skaanes Ahrenfeldt <atle.skaanes@gmail.com>"]
 description = "A small CLI for quickly viewing the ASCII table in your terminal"
@@ -13,5 +13,5 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 clap = { version = "4.5.2", features = ["derive"] }
-colored = "2.1.0"
+colored = "3.0.0"
 radix_fmt = "1.0.0"
