@@ -6,10 +6,14 @@ use std::io::BufRead;
 pub struct Args {
     #[command(subcommand)]
     pub command: Option<SubCommands>,
+    /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
+    #[arg(short, long)]
+    pub base: Option<u8>,
 }
 
 #[derive(Subcommand, Debug)]
 pub enum SubCommands {
+    Foo,
     /// Shows the Ascii table
     Table {
         /// The numbers base, deafults to 16 (Hexadecimal) [max is 36]
